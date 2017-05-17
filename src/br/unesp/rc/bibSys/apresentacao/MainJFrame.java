@@ -16,6 +16,7 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
+        txaDisplay.setEnabled(false);
     }
 
     /**
@@ -27,21 +28,124 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txaDisplay = new javax.swing.JTextArea();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jmiNovo = new javax.swing.JMenuItem();
+        jmiAbrir = new javax.swing.JMenuItem();
+        jmiSalvar = new javax.swing.JMenuItem();
+        jmiPadronizar = new javax.swing.JMenuItem();
+        jmiComparar = new javax.swing.JMenuItem();
+        jmiConcatenar = new javax.swing.JMenuItem();
+        jmiOrdenar = new javax.swing.JMenuItem();
+        jmiSair = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Bibsys");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        txaDisplay.setColumns(20);
+        txaDisplay.setRows(5);
+        jScrollPane1.setViewportView(txaDisplay);
+
+        jMenu2.setText("Arquivo");
+
+        jmiNovo.setText("Novo");
+        jMenu2.add(jmiNovo);
+
+        jmiAbrir.setText("Abrir");
+        jMenu2.add(jmiAbrir);
+
+        jmiSalvar.setText("Salvar");
+        jmiSalvar.setToolTipText("");
+        jMenu2.add(jmiSalvar);
+
+        jmiPadronizar.setText("Padronizar");
+        jMenu2.add(jmiPadronizar);
+
+        jmiComparar.setText("Comparar");
+        jMenu2.add(jmiComparar);
+
+        jmiConcatenar.setText("Concatenar");
+        jmiConcatenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiConcatenarActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiConcatenar);
+
+        jmiOrdenar.setText("Ordenar");
+        jMenu2.add(jmiOrdenar);
+
+        jmiSair.setText("Sair");
+        jmiSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSairActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiSair);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Sobre");
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmiSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jmiSairActionPerformed
+
+    private void jmiConcatenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConcatenarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiConcatenarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +183,20 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem jmiAbrir;
+    private javax.swing.JMenuItem jmiComparar;
+    private javax.swing.JMenuItem jmiConcatenar;
+    private javax.swing.JMenuItem jmiNovo;
+    private javax.swing.JMenuItem jmiOrdenar;
+    private javax.swing.JMenuItem jmiPadronizar;
+    private javax.swing.JMenuItem jmiSair;
+    private javax.swing.JMenuItem jmiSalvar;
+    private javax.swing.JTextArea txaDisplay;
     // End of variables declaration//GEN-END:variables
 }
