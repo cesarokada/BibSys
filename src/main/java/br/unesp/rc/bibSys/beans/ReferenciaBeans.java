@@ -1,6 +1,6 @@
 package br.unesp.rc.bibSys.beans;
 
-public class ReferenciaBeans {
+public class ReferenciaBeans{
 
     /**
      * @return the bibKey

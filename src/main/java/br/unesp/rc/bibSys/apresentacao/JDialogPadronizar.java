@@ -8,7 +8,11 @@ package br.unesp.rc.bibSys.apresentacao;
 import br.unesp.rc.bibSys.beans.ReferenciaBeans;
 import br.unesp.rc.bibSys.utils.ManagerGUI;
 import br.unesp.rc.bibSys.utils.ParserBibTex;
+import br.unesp.rc.bibSys.utils.ParserObject;
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 
 /**
@@ -170,9 +174,21 @@ public class JDialogPadronizar extends javax.swing.JDialog {
         ref.setPaginas("190-200");
         ref.setRevista("Magazina");
         ref.setTipoReferencia("ARTICLE");
+        ref.setBibKey("CESAR:2010");
         
         String teste;
         teste = ParserBibTex.jsonToBibTex(ref);
+        
+        ReferenciaBeans refReturn;
+        
+        try {
+            
+            refReturn = ParserObject.stringToObject(teste);
+        } catch (NoSuchMethodException | IllegalAccessException | IllegalArgumentException | NoSuchFieldException | InvocationTargetException ex) {
+            Logger.getLogger(JDialogPadronizar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }//GEN-LAST:event_btnTransformarActionPerformed
 
     /**

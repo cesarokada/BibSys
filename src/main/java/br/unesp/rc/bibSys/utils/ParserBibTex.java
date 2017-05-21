@@ -41,7 +41,7 @@ public final class ParserBibTex {
         });
         
         result.append("}");
-        System.out.println(result.toString());
+
         return result.toString();
     }
 
