@@ -5,7 +5,9 @@
  */
 package br.unesp.rc.bibSys.apresentacao;
 
+import br.unesp.rc.bibSys.beans.ReferenciaBeans;
 import br.unesp.rc.bibSys.utils.ManagerGUI;
+import br.unesp.rc.bibSys.utils.ParserBibTex;
 import java.io.File;
 import javax.swing.JFileChooser;
 
@@ -79,6 +81,11 @@ public class JDialogPadronizar extends javax.swing.JDialog {
         );
 
         btnTransformar.setLabel("Transformar ->");
+        btnTransformar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransformarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -153,6 +160,20 @@ public class JDialogPadronizar extends javax.swing.JDialog {
             txtPathArquivo.setText(arquivo.getPath());
         }
     }//GEN-LAST:event_btnProcurarArquivoActionPerformed
+
+    private void btnTransformarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransformarActionPerformed
+        ReferenciaBeans ref = new ReferenciaBeans();
+        ref.setAno("1900");
+        ref.setAutor("Cesar Okada");
+        ref.setEndereco("Rua da Paz");
+        ref.setNumero("23");
+        ref.setPaginas("190-200");
+        ref.setRevista("Magazina");
+        ref.setTipoReferencia("ARTICLE");
+        
+        String teste;
+        teste = ParserBibTex.jsonToBibTex(ref);
+    }//GEN-LAST:event_btnTransformarActionPerformed
 
     /**
      * @param args the command line arguments

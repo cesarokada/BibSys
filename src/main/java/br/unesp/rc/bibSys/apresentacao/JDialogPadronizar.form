@@ -140,6 +140,9 @@
           <Properties>
             <Property name="label" type="java.lang.String" value="Transformar -&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTransformarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="java.awt.TextArea" name="textArea2">
         </Component>
