@@ -5,10 +5,6 @@ import java.awt.Toolkit;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
-/**
- *
- * @author aluno
- */
 public class ManagerGUI {
 
     public static void centralizar(JFrame frame) {

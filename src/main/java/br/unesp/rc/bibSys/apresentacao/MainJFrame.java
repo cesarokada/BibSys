@@ -5,6 +5,7 @@
  */
 package br.unesp.rc.bibSys.apresentacao;
 
+import br.unesp.rc.bibSys.utils.EditorTexto;
 import br.unesp.rc.bibSys.utils.ManagerGUI;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -82,6 +83,11 @@ public class MainJFrame extends javax.swing.JFrame {
         jMenu2.setText("Arquivo");
 
         jmiNovo.setText("Novo");
+        jmiNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiNovoActionPerformed(evt);
+            }
+        });
         jMenu2.add(jmiNovo);
 
         jmiAbrir.setText("Abrir");
@@ -190,6 +196,10 @@ public class MainJFrame extends javax.swing.JFrame {
         Sobre.pack();
         Sobre.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jmiNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNovoActionPerformed
+        EditorTexto doc = new EditorTexto();
+    }//GEN-LAST:event_jmiNovoActionPerformed
 
     /**
      * @param args the command line arguments
