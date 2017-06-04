@@ -5,10 +5,14 @@
  */
 package br.unesp.rc.bibSys.apresentacao;
 
+import br.unesp.rc.bibSys.utils.ArquivosUtils;
 import br.unesp.rc.bibSys.utils.EditorTexto;
 import br.unesp.rc.bibSys.utils.ManagerGUI;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -91,6 +95,11 @@ public class MainJFrame extends javax.swing.JFrame {
         jMenu2.add(jmiNovo);
 
         jmiAbrir.setText("Abrir");
+        jmiAbrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAbrirActionPerformed(evt);
+            }
+        });
         jMenu2.add(jmiAbrir);
 
         jmiSalvar.setText("Salvar");
@@ -198,8 +207,20 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jmiNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNovoActionPerformed
-        EditorTexto doc = new EditorTexto();
+
+        EditorTexto doc = new EditorTexto(false, "");
     }//GEN-LAST:event_jmiNovoActionPerformed
+
+    private void jmiAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAbrirActionPerformed
+        
+        JFileChooser chooser = new JFileChooser();
+        String path = "";
+                
+        if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) 
+            path = chooser.getSelectedFile().toString();
+        
+        EditorTexto doc = new EditorTexto(true, path);
+    }//GEN-LAST:event_jmiAbrirActionPerformed
 
     /**
      * @param args the command line arguments

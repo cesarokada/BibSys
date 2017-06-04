@@ -22,7 +22,7 @@ public class EditorTexto extends JFrame implements ActionListener
     private String _pathFile = "";
 
 
-    public EditorTexto(){
+    public EditorTexto(boolean isEditar, String path){
         super("Document");
         setSize(600, 600);
         setLocationRelativeTo(null);
@@ -87,7 +87,22 @@ public class EditorTexto extends JFrame implements ActionListener
         statusI.addActionListener(this);
 
         setVisible(true);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        EscreverArquivo(isEditar, path);
     }
+
+    private void EscreverArquivo(boolean isEditar, String path) {
+        _pathFile = isEditar ? path : "";
+        if(isEditar){
+            try {
+                ta.setText(ArquivosUtils.lerArquivo(_pathFile));
+            } catch (IOException ex) {
+                Logger.getLogger(EditorTexto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) 
     {
