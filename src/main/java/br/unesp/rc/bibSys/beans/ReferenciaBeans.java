@@ -3,33 +3,6 @@ package br.unesp.rc.bibSys.beans;
 public class ReferenciaBeans{
 
     /**
-     * @return the bibKey
-     */
-    public String getBibKey() {
-        return bibKey;
-    }
-
-    /**
-     * @param bibKey the bibKey to set
-     */
-    public void setBibKey(String bibKey) {
-        this.bibKey = bibKey;
-    }
-
-    private String tipoReferencia;
-    private String autor;
-    private String titulo;
-    private String revista;
-    private String volume;
-    private String numero;
-    private String paginas;
-    private String serie;
-    private String endereco;
-    private String ano;
-    private String texto;
-    private String url;
-    private String bibKey;
-    /**
      * @return the tipoReferencia
      */
     public String getTipoReferencia() {
@@ -44,45 +17,45 @@ public class ReferenciaBeans{
     }
 
     /**
-     * @return the autor
+     * @return the author
      */
-    public String getAutor() {
-        return autor;
+    public String getAuthor() {
+        return author;
     }
 
     /**
-     * @param autor the autor to set
+     * @param author the author to set
      */
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     /**
-     * @return the titulo
+     * @return the title
      */
-    public String getTitulo() {
-        return titulo;
+    public String getTitle() {
+        return title;
     }
 
     /**
-     * @param titulo the titulo to set
+     * @param title the title to set
      */
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     /**
-     * @return the revista
+     * @return the magazine
      */
-    public String getRevista() {
-        return revista;
+    public String getMagazine() {
+        return magazine;
     }
 
     /**
-     * @param revista the revista to set
+     * @param magazine the magazine to set
      */
-    public void setRevista(String revista) {
-        this.revista = revista;
+    public void setMagazine(String magazine) {
+        this.magazine = magazine;
     }
 
     /**
@@ -100,87 +73,87 @@ public class ReferenciaBeans{
     }
 
     /**
-     * @return the numero
+     * @return the number
      */
-    public String getNumero() {
-        return numero;
+    public String getNumber() {
+        return number;
     }
 
     /**
-     * @param numero the numero to set
+     * @param number the number to set
      */
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     /**
-     * @return the paginas
+     * @return the pages
      */
-    public String getPaginas() {
-        return paginas;
+    public String getPages() {
+        return pages;
     }
 
     /**
-     * @param paginas the paginas to set
+     * @param pages the pages to set
      */
-    public void setPaginas(String paginas) {
-        this.paginas = paginas;
+    public void setPages(String pages) {
+        this.pages = pages;
     }
 
     /**
-     * @return the serie
+     * @return the series
      */
-    public String getSerie() {
-        return serie;
+    public String getSeries() {
+        return series;
     }
 
     /**
-     * @param serie the serie to set
+     * @param series the series to set
      */
-    public void setSerie(String serie) {
-        this.serie = serie;
+    public void setSeries(String series) {
+        this.series = series;
     }
 
     /**
-     * @return the endereco
+     * @return the address
      */
-    public String getEndereco() {
-        return endereco;
+    public String getAddress() {
+        return address;
     }
 
     /**
-     * @param endereco the endereco to set
+     * @param address the address to set
      */
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     /**
-     * @return the ano
+     * @return the year
      */
-    public String getAno() {
-        return ano;
+    public String getYear() {
+        return year;
     }
 
     /**
-     * @param ano the ano to set
+     * @param year the year to set
      */
-    public void setAno(String ano) {
-        this.ano = ano;
+    public void setYear(String year) {
+        this.year = year;
     }
 
     /**
-     * @return the texto
+     * @return the text
      */
-    public String getTexto() {
-        return texto;
+    public String getText() {
+        return text;
     }
 
     /**
-     * @param texto the texto to set
+     * @param text the text to set
      */
-    public void setTexto(String texto) {
-        this.texto = texto;
+    public void setText(String text) {
+        this.text = text;
     }
 
     /**
@@ -196,4 +169,108 @@ public class ReferenciaBeans{
     public void setUrl(String url) {
         this.url = url;
     }
+
+    /**
+     * @return the bibKey
+     */
+    public String getBibKey() {
+        return bibKey;
+    }
+
+    /**
+     * @param bibKey the bibKey to set
+     */
+    public void setBibKey(String bibKey) {
+        this.bibKey = bibKey;
+    }
+
+    /**
+     * @return the publisher
+     */
+    public String getPublisher() {
+        return publisher;
+    }
+
+    /**
+     * @param publisher the publisher to set
+     */
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    /**
+     * @return the location
+     */
+    public String getLocation() {
+        return location;
+    }
+
+    /**
+     * @param location the location to set
+     */
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    /**
+     * @return the issn
+     */
+    public String getIssn() {
+        return issn;
+    }
+
+    /**
+     * @param issn the issn to set
+     */
+    public void setIssn(String issn) {
+        this.issn = issn;
+    }
+
+    /**
+     * @return the doi
+     */
+    public String getDoi() {
+        return doi;
+    }
+
+    /**
+     * @param doi the doi to set
+     */
+    public void setDoi(String doi) {
+        this.doi = doi;
+    }
+
+    /**
+     * @return the booktitle
+     */
+    public String getBooktitle() {
+        return booktitle;
+    }
+
+    /**
+     * @param booktitle the booktitle to set
+     */
+    public void setBooktitle(String booktitle) {
+        this.booktitle = booktitle;
+    }
+
+    private String tipoReferencia;
+    private String author;
+    private String title;
+    private String magazine;
+    private String volume;
+    private String number;
+    private String pages;
+    private String series;
+    private String address;
+    private String year;
+    private String text;
+    private String url;
+    private String bibKey;
+    private String publisher;
+    private String location;
+    private String issn;
+    private String doi;
+    private String booktitle;
+
 }

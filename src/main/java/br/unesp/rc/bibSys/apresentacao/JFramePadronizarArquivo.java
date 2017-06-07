@@ -5,7 +5,11 @@
  */
 package br.unesp.rc.bibSys.apresentacao;
 
+import br.unesp.rc.bibSys.utils.ArquivosUtils;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 
 /**
@@ -36,7 +40,7 @@ public class JFramePadronizarArquivo extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         textArea1 = new java.awt.TextArea();
         btnTransformar = new java.awt.Button();
-        textArea2 = new java.awt.TextArea();
+        txtArquivoOriginal = new java.awt.TextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +80,11 @@ public class JFramePadronizarArquivo extends javax.swing.JFrame {
         );
 
         btnTransformar.setLabel("Transformar ->");
+        btnTransformar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransformarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -83,30 +92,30 @@ public class JFramePadronizarArquivo extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnTransformar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTransformar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(textArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(20, 20, 20)
-                    .addComponent(textArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtArquivoOriginal, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(334, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textArea1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(textArea1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(137, 137, 137)
                 .addComponent(btnTransformar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(textArea2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtArquivoOriginal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -143,13 +152,23 @@ public class JFramePadronizarArquivo extends javax.swing.JFrame {
             txtPathArquivo.setText("");
         } else {
             File arquivo = fileInput.getSelectedFile();
-           txtPathArquivo.setText(arquivo.getPath());
+            txtPathArquivo.setText(arquivo.getPath());
+            
+            try {
+                txtArquivoOriginal.setText(ArquivosUtils.lerArquivo(txtPathArquivo.getText()));
+            } catch (IOException ex) {
+                Logger.getLogger(JFramePadronizarArquivo.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnProcurarArquivoActionPerformed
 
     private void txtPathArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPathArquivoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPathArquivoActionPerformed
+
+    private void btnTransformarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransformarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTransformarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,7 +211,7 @@ public class JFramePadronizarArquivo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private java.awt.TextArea textArea1;
-    private java.awt.TextArea textArea2;
+    private java.awt.TextArea txtArquivoOriginal;
     private javax.swing.JTextField txtPathArquivo;
     // End of variables declaration//GEN-END:variables
 }

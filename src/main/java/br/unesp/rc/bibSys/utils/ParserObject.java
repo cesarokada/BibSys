@@ -1,7 +1,6 @@
 package br.unesp.rc.bibSys.utils;
 
 import br.unesp.rc.bibSys.beans.ReferenciaBeans;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,8 +30,10 @@ public final class ParserObject {
         
         //seta os Atributos do objeto
         for(String line : listLines){
-            String[] keyValue = line.split("=");
-            BeanUtils.setProperty(referencia,keyValue[0].trim(),keyValue[1].trim());
+            if(!line.trim().equals("")){
+                String[] keyValue = line.split("=");
+                BeanUtils.setProperty(referencia,keyValue[0].trim(),keyValue[1].trim());
+            }
         }
         
         return referencia;

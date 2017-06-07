@@ -97,15 +97,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btnTransformar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnTransformar" min="-2" pref="89" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="textArea1" min="-2" pref="337" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="textArea2" min="-2" pref="337" max="-2" attributes="0"/>
+                      <Component id="txtArquivoOriginal" min="-2" pref="337" max="-2" attributes="0"/>
                       <EmptySpace pref="334" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -115,18 +115,18 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="textArea1" max="32767" attributes="0"/>
+                  <Component id="textArea1" pref="353" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
                   <Component id="btnTransformar" min="-2" pref="55" max="-2" attributes="0"/>
-                  <EmptySpace pref="181" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="textArea2" max="32767" attributes="0"/>
+                      <Component id="txtArquivoOriginal" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -140,8 +140,11 @@
           <Properties>
             <Property name="label" type="java.lang.String" value="Transformar -&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTransformarActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="java.awt.TextArea" name="textArea2">
+        <Component class="java.awt.TextArea" name="txtArquivoOriginal">
         </Component>
       </SubComponents>
     </Container>

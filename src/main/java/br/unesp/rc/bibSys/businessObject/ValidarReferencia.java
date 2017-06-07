@@ -30,4 +30,8 @@ public class ValidarReferencia {
         
         return retorno;
     }
+    
+    private String retirarParentesis(String txt){
+        return txt.replaceAll("\\{|}", "");
+    }
 }
