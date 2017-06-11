@@ -14,10 +14,7 @@ public class ArquivosUtils {
         //Abre o arquivo
         File file = new File(path);
         try (FileWriter fw = new FileWriter(file)) {
-            String lineBreak = System.getProperty("line.separator");
-            String textArea = conteudo;
-            String as = textArea.replaceAll("\n", lineBreak);
-            fw.write(as);
+            fw.write(conteudo);
         }
         
         return file.getPath();

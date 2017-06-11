@@ -32,7 +32,9 @@ public final class ParserObject {
         for(String line : listLines){
             if(!line.trim().equals("")){
                 String[] keyValue = line.split("=");
-                BeanUtils.setProperty(referencia,keyValue[0].trim(),keyValue[1].trim());
+                BeanUtils.setProperty(referencia,
+                        keyValue[0].trim(),
+                        keyValue.length > 1 ? keyValue[1].trim() : "");
             }
         }
         
