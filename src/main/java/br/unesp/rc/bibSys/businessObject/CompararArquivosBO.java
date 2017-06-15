@@ -36,16 +36,26 @@ public class CompararArquivosBO {
         
         List<ReferenciaBeans> retornoListA = new ArrayList<>();
         List<ReferenciaBeans> retornoListB = new ArrayList<>();
+
+        for(ReferenciaBeans r : listaRefA){
+            boolean exists = false;
+            for(ReferenciaBeans s : listaRefB){
+                if(r.getBibKey().equals(s.getBibKey()))
+                    exists = true;
+            }
+            if(!exists)
+                retornoListA.add(r);
+        }
         
-        listaRefA.forEach((t) -> {
-            if(!listaRefB.contains(t.getBibKey()))
-                retornoListA.add(t);
-        });
-        
-        listaRefB.forEach((t) -> {
-            if(!listaRefA.contains(t.getBibKey()))
-                retornoListB.add(t);
-        });
+        for(ReferenciaBeans r : listaRefB){
+            boolean exists = false;
+            for(ReferenciaBeans s : listaRefA){
+                if(r.getBibKey().equals(s.getBibKey()))
+                    exists = true;
+            }
+            if(!exists)
+                retornoListB.add(r);
+        }
         
         retorno.setReferenciasA(retornoListA);
         retorno.setReferenciasB(retornoListB);
