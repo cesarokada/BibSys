@@ -2,7 +2,10 @@ package br.unesp.rc.bibSys.businessObject;
 
 import br.unesp.rc.bibSys.beans.ReferenciaBeans;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ValidarReferencia {
     
@@ -33,5 +36,33 @@ public class ValidarReferencia {
     
     private String retirarParentesis(String txt){
         return txt.replaceAll("\\{|}", "");
+    }
+    
+    public String retirarEspacosChaves(String objRef){
+        String pattern;
+        pattern = "[a-zA-Z0-9]+(\\s|\\S)*=(\\s|\\S)*(\\{|\\\")[a-zA-Z0-9\\W\\s]*(\\}|\\\")";
+        StringBuilder retorno = new StringBuilder();
+
+        Pattern r = Pattern.compile(pattern);
+
+        List<String> linesRef = Arrays.asList(objRef.split(System.lineSeparator()));
+
+        linesRef.stream().map((line) -> {
+            Matcher m = r.matcher(line);
+            if (m.find()) {
+                line = line.trim();
+                line = line.replaceAll("\\{", "");
+                line = line.replaceAll("\\}", "");
+
+                line = line.replaceAll("\"", "");
+
+                line = line.replaceAll(",", "");
+            }
+            return line;
+        }).forEachOrdered((line) -> {
+            retorno.append(line).append(System.lineSeparator());
+        });
+
+        return retorno.toString();
     }
 }

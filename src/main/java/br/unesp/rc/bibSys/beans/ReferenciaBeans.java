@@ -1,5 +1,7 @@
 package br.unesp.rc.bibSys.beans;
 
+import java.util.Objects;
+
 public class ReferenciaBeans{
 
     /**
@@ -272,5 +274,24 @@ public class ReferenciaBeans{
     private String issn;
     private String doi;
     private String booktitle;
+    
+    
+    @Override
+    public boolean equals(Object v) {
+        boolean retVal = false;
 
+        if (v instanceof ReferenciaBeans){
+            ReferenciaBeans ptr = (ReferenciaBeans) v;
+            retVal = ptr.bibKey.equals(this.bibKey);
+        }
+
+     return retVal;
+  }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.bibKey);
+        return hash;
+    }
 }

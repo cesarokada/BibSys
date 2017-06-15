@@ -115,6 +115,11 @@ public class MainJFrame extends javax.swing.JFrame {
         jMenu2.add(jmiPadronizar);
 
         jmiComparar.setText("Comparar");
+        jmiComparar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCompararActionPerformed(evt);
+            }
+        });
         jMenu2.add(jmiComparar);
 
         jmiConcatenar.setText("Concatenar");
@@ -221,6 +226,12 @@ public class MainJFrame extends javax.swing.JFrame {
         
         EditorTexto doc = new EditorTexto(true, path);
     }//GEN-LAST:event_jmiAbrirActionPerformed
+
+    private void jmiCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCompararActionPerformed
+        JDialog frameComparar = new JDialogComparar(this,true);
+        frameComparar.pack();
+        frameComparar.setVisible(true);
+    }//GEN-LAST:event_jmiCompararActionPerformed
 
     /**
      * @param args the command line arguments
