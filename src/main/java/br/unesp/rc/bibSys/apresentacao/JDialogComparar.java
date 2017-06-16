@@ -45,6 +45,7 @@ public class JDialogComparar extends javax.swing.JDialog {
         btnProcurarArqB = new java.awt.Button();
         btnComparar = new java.awt.Button();
         txtComparar = new java.awt.TextArea();
+        btnConcatenar = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -81,6 +82,13 @@ public class JDialogComparar extends javax.swing.JDialog {
 
         txtComparar.setEditable(false);
 
+        btnConcatenar.setLabel("Concatenar");
+        btnConcatenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConcatenarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -105,6 +113,8 @@ public class JDialogComparar extends javax.swing.JDialog {
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnComparar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnConcatenar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -127,7 +137,9 @@ public class JDialogComparar extends javax.swing.JDialog {
                         .addGap(2, 2, 2)
                         .addComponent(txtArquivoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnComparar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnComparar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConcatenar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtComparar, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -141,6 +153,7 @@ public class JDialogComparar extends javax.swing.JDialog {
         lblArquivoB.getAccessibleContext().setAccessibleName("lblArquivoB");
         txtArquivoA.getAccessibleContext().setAccessibleName("txtArquivoA");
         btnProcurarArqA.getAccessibleContext().setAccessibleName("");
+        btnConcatenar.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,7 +169,7 @@ public class JDialogComparar extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -194,6 +207,10 @@ public class JDialogComparar extends javax.swing.JDialog {
             Logger.getLogger(JDialogComparar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnCompararActionPerformed
+
+    private void btnConcatenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcatenarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConcatenarActionPerformed
 
     private void gerenciarVisibilidadeBotaoComparar(){
         btnComparar.setVisible(!txtArquivoA.getText().equals("") && !txtArquivoB.getText().equals(""));
@@ -243,6 +260,7 @@ public class JDialogComparar extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button btnComparar;
+    private java.awt.Button btnConcatenar;
     private java.awt.Button btnProcurarArqA;
     private java.awt.Button btnProcurarArqB;
     private javax.swing.JPanel jPanel1;

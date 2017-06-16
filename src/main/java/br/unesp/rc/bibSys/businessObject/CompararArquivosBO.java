@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.unesp.rc.bibSys.businessObject;
 
-import br.unesp.rc.bibSys.apresentacao.JDialogComparar;
 import br.unesp.rc.bibSys.beans.ReferenciaBeans;
 import br.unesp.rc.bibSys.beans.ReferenciaCompararBeans;
 import br.unesp.rc.bibSys.utils.ArquivosUtils;
-import br.unesp.rc.bibSys.utils.ParserBibTex;
 import br.unesp.rc.bibSys.utils.ParserObject;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -20,11 +14,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * 
  * @author Cesar
  */
 public class CompararArquivosBO {
  
+    /**
+     * Retorna um objeto ReferenciaCompararBeans contendo duas listar de referências, 
+     * uma referente ao arquivo A e outra do arquivo B.
+     * 
+     * @param pathArquivoA caminho do arquivo A
+     * @param pathArquivoB caminho do arquivo B
+     * @return
+     * @throws IOException 
+     */
     public ReferenciaCompararBeans compararArquivos(String pathArquivoA, String pathArquivoB) throws IOException{
         ReferenciaCompararBeans retorno = new ReferenciaCompararBeans();
         
@@ -63,6 +66,11 @@ public class CompararArquivosBO {
         return retorno;
     }
     
+    /**
+     * 
+     * @param fileContent
+     * @return 
+     */
     private List<ReferenciaBeans> montarObjetoReferencia(String fileContent){
         if(fileContent.equals(""))
             return null;
