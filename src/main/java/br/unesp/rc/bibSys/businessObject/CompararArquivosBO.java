@@ -31,34 +31,13 @@ public class CompararArquivosBO {
     public ReferenciaCompararBeans compararArquivos(String pathArquivoA, String pathArquivoB) throws IOException{
         ReferenciaCompararBeans retorno = new ReferenciaCompararBeans();
         
-        String arquivoA = ArquivosUtils.lerArquivo(pathArquivoA);
-        String arquivoB = ArquivosUtils.lerArquivo(pathArquivoB);
+        List<ReferenciaBeans> listaRefA = montarObjetoReferencia(pathArquivoA);
+        List<ReferenciaBeans> listaRefB = montarObjetoReferencia(pathArquivoB);
         
-        List<ReferenciaBeans> listaRefA = montarObjetoReferencia(arquivoA);
-        List<ReferenciaBeans> listaRefB = montarObjetoReferencia(arquivoB);
-        
-        List<ReferenciaBeans> retornoListA = new ArrayList<>();
-        List<ReferenciaBeans> retornoListB = new ArrayList<>();
-
-        for(ReferenciaBeans r : listaRefA){
-            boolean exists = false;
-            for(ReferenciaBeans s : listaRefB){
-                if(r.getBibKey().equals(s.getBibKey()))
-                    exists = true;
-            }
-            if(!exists)
-                retornoListA.add(r);
-        }
-        
-        for(ReferenciaBeans r : listaRefB){
-            boolean exists = false;
-            for(ReferenciaBeans s : listaRefA){
-                if(r.getBibKey().equals(s.getBibKey()))
-                    exists = true;
-            }
-            if(!exists)
-                retornoListB.add(r);
-        }
+        //Retorna referências que estão em A e não em B
+        List<ReferenciaBeans> retornoListA = retornarDiferencas(listaRefA, listaRefB);
+        //Retorna referências que estão em B e não em A
+        List<ReferenciaBeans> retornoListB = retornarDiferencas(listaRefB, listaRefA);
         
         retorno.setReferenciasA(retornoListA);
         retorno.setReferenciasB(retornoListB);
@@ -66,17 +45,15 @@ public class CompararArquivosBO {
         return retorno;
     }
     
-    /**
-     * 
-     * @param fileContent
-     * @return 
-     */
-    private List<ReferenciaBeans> montarObjetoReferencia(String fileContent){
-        if(fileContent.equals(""))
+
+    public List<ReferenciaBeans> montarObjetoReferencia(String pathArquivo) throws IOException{
+        String contentFile = ArquivosUtils.lerArquivo(pathArquivo);
+        
+        if(contentFile.equals(""))
             return null;
         
         ValidarReferencia validador = new ValidarReferencia();
-        List<String> refList = Arrays.asList(fileContent.split("@"));
+        List<String> refList = Arrays.asList(contentFile.split("@"));
         List<ReferenciaBeans> retorno = new ArrayList<>();
                 
         try {
@@ -92,5 +69,22 @@ public class CompararArquivosBO {
         }
         
         return retorno;
+    }
+    
+    public List<ReferenciaBeans> retornarDiferencas(List<ReferenciaBeans> listaA, List<ReferenciaBeans> listaB){
+        
+        List<ReferenciaBeans> retornoList = new ArrayList<>();
+        
+        for(ReferenciaBeans r : listaA){
+            boolean exists = false;
+            for(ReferenciaBeans s : listaB){
+                if(r.getBibKey().equals(s.getBibKey()))
+                    exists = true;
+            }
+            if(!exists)
+                retornoList.add(r);
+        }
+        
+        return retornoList;
     }
 }

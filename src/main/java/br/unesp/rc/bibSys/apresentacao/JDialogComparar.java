@@ -6,10 +6,13 @@
 package br.unesp.rc.bibSys.apresentacao;
 
 import br.unesp.rc.bibSys.beans.ReferenciaCompararBeans;
+import br.unesp.rc.bibSys.beans.ReferenciaConcatenarBeans;
 import br.unesp.rc.bibSys.businessObject.CompararArquivosBO;
-import br.unesp.rc.bibSys.utils.ArquivosUtils;
+import br.unesp.rc.bibSys.businessObject.ConcatenarArquivosBO;
 import br.unesp.rc.bibSys.utils.ManagerGUI;
+import br.unesp.rc.bibSys.utils.ParserBibTex;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -209,7 +212,20 @@ public class JDialogComparar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCompararActionPerformed
 
     private void btnConcatenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcatenarActionPerformed
-        // TODO add your handling code here:
+        ConcatenarArquivosBO concatenarBO = new ConcatenarArquivosBO();
+        StringBuilder text = new StringBuilder();
+        try {
+            List<ReferenciaConcatenarBeans> concatList = concatenarBO.concatenarArquivos(txtArquivoA.getText(), txtArquivoB.getText());
+            
+            concatList.forEach((t) -> {
+                text.append(ParserBibTex.jsonToBibTex(t.getReferencia())).append(System.lineSeparator());
+            });
+            
+            txtComparar.setText(text.toString());
+        } catch (IOException ex) {
+            Logger.getLogger(JDialogComparar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnConcatenarActionPerformed
 
     private void gerenciarVisibilidadeBotaoComparar(){
