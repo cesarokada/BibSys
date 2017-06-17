@@ -13,6 +13,9 @@ public final class ParserObject {
                 
         ReferenciaBeans referencia = new ReferenciaBeans();
         
+        if(element == null || element.trim().equals(""))
+            return null;
+        
         //Separa em linhas
         String[] lines = element.split(System.getProperty("line.separator"));
         

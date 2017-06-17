@@ -18,7 +18,7 @@ public class PadronizarBO {
                 
         try {
             for(String ref : refList){
-                if(!ref.equals("")){
+                if(!ref.trim().equals("")){
                     ref = validador.retirarEspacosChaves(ref);
                     
                     ReferenciaBeans objReferencia = ParserObject.stringToObject(ref);

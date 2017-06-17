@@ -9,6 +9,7 @@ import br.unesp.rc.bibSys.beans.ReferenciaCompararBeans;
 import br.unesp.rc.bibSys.beans.ReferenciaConcatenarBeans;
 import br.unesp.rc.bibSys.businessObject.CompararArquivosBO;
 import br.unesp.rc.bibSys.businessObject.ConcatenarArquivosBO;
+import br.unesp.rc.bibSys.utils.ArquivosUtils;
 import br.unesp.rc.bibSys.utils.ManagerGUI;
 import br.unesp.rc.bibSys.utils.ParserBibTex;
 import java.io.IOException;
@@ -28,6 +29,8 @@ public class JDialogComparar extends javax.swing.JDialog {
     public JDialogComparar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        gerenciarVisibilidadeBotaoComparar();
+        gerenciarVisibilidadeBotaoConcatenar();
     }
 
     /**
@@ -46,9 +49,10 @@ public class JDialogComparar extends javax.swing.JDialog {
         label2 = new java.awt.Label();
         txtArquivoB = new java.awt.TextField();
         btnProcurarArqB = new java.awt.Button();
-        btnComparar = new java.awt.Button();
         txtComparar = new java.awt.TextArea();
-        btnConcatenar = new java.awt.Button();
+        btnSalvar = new javax.swing.JButton();
+        btnComparar = new javax.swing.JButton();
+        btnConcatenar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -76,16 +80,24 @@ public class JDialogComparar extends javax.swing.JDialog {
             }
         });
 
-        btnComparar.setLabel("Comparar");
+        txtComparar.setEditable(false);
+
+        btnSalvar.setText("Salvar");
+        btnSalvar.setToolTipText("");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+
+        btnComparar.setText("Comparar");
         btnComparar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCompararActionPerformed(evt);
             }
         });
 
-        txtComparar.setEditable(false);
-
-        btnConcatenar.setLabel("Concatenar");
+        btnConcatenar.setText("Concatenar");
         btnConcatenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConcatenarActionPerformed(evt);
@@ -110,15 +122,16 @@ public class JDialogComparar extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblArquivoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtArquivoB, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtArquivoB, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnComparar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnConcatenar)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnProcurarArqB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnComparar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnConcatenar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnProcurarArqB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -139,10 +152,11 @@ public class JDialogComparar extends javax.swing.JDialog {
                         .addComponent(lblArquivoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
                         .addComponent(txtArquivoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnComparar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConcatenar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnComparar)
+                    .addComponent(btnConcatenar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtComparar, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -156,7 +170,6 @@ public class JDialogComparar extends javax.swing.JDialog {
         lblArquivoB.getAccessibleContext().setAccessibleName("lblArquivoB");
         txtArquivoA.getAccessibleContext().setAccessibleName("txtArquivoA");
         btnProcurarArqA.getAccessibleContext().setAccessibleName("");
-        btnConcatenar.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,11 +194,14 @@ public class JDialogComparar extends javax.swing.JDialog {
     private void btnProcurarArqAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarArqAActionPerformed
         txtArquivoA.setText(ManagerGUI.abrirSeletorArquivo());
         gerenciarVisibilidadeBotaoComparar();
+        gerenciarVisibilidadeBotaoConcatenar();
     }//GEN-LAST:event_btnProcurarArqAActionPerformed
 
     private void btnProcurarArqBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarArqBActionPerformed
         txtArquivoB.setText(ManagerGUI.abrirSeletorArquivo());
         gerenciarVisibilidadeBotaoComparar();
+        gerenciarVisibilidadeBotaoConcatenar();
+        gerenciarVisibilidadeBotaoSalvar();
     }//GEN-LAST:event_btnProcurarArqBActionPerformed
 
     private void btnCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompararActionPerformed
@@ -193,19 +209,19 @@ public class JDialogComparar extends javax.swing.JDialog {
         StringBuilder str = new StringBuilder();
         try {
             ReferenciaCompararBeans refList = bo.compararArquivos(txtArquivoA.getText(), txtArquivoB.getText());
-            
+
             refList.getReferenciasA().forEach((t) -> {
                 str.append(t.getBibKey()).append(System.lineSeparator());
             });
-            
+
             str.append(System.lineSeparator()).append("----------------------------").append(System.lineSeparator());
-            
+
             refList.getReferenciasB().forEach((t) -> {
                 str.append(t.getBibKey()).append(System.lineSeparator());
             });
-            
+
             txtComparar.setText(str.toString());
-            
+            gerenciarVisibilidadeBotaoSalvar();
         } catch (IOException ex) {
             Logger.getLogger(JDialogComparar.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -216,20 +232,40 @@ public class JDialogComparar extends javax.swing.JDialog {
         StringBuilder text = new StringBuilder();
         try {
             List<ReferenciaConcatenarBeans> concatList = concatenarBO.concatenarArquivos(txtArquivoA.getText(), txtArquivoB.getText());
-            
+
             concatList.forEach((t) -> {
                 text.append(ParserBibTex.jsonToBibTex(t.getReferencia())).append(System.lineSeparator());
             });
-            
+
             txtComparar.setText(text.toString());
+            gerenciarVisibilidadeBotaoSalvar();
         } catch (IOException ex) {
             Logger.getLogger(JDialogComparar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }//GEN-LAST:event_btnConcatenarActionPerformed
 
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        String path = ManagerGUI.abrirSeletorArquivo();
+        try {
+            if(path != null && !path.equals(""))
+                ArquivosUtils.escreverArquivo(path, txtComparar.getText());
+        } catch (IOException ex) {
+            Logger.getLogger(JDialogComparar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
     private void gerenciarVisibilidadeBotaoComparar(){
-        btnComparar.setVisible(!txtArquivoA.getText().equals("") && !txtArquivoB.getText().equals(""));
+        btnComparar.setEnabled(!txtArquivoA.getText().equals("") && !txtArquivoB.getText().equals(""));
+    }
+    
+    private void gerenciarVisibilidadeBotaoConcatenar(){
+        btnConcatenar.setEnabled(!txtArquivoA.getText().equals("") && !txtArquivoB.getText().equals(""));
+    }
+    
+    private void gerenciarVisibilidadeBotaoSalvar(){
+        btnSalvar.setEnabled(!txtArquivoA.getText().equals("") 
+                && !txtArquivoB.getText().equals("") 
+                && !txtComparar.getText().trim().equals(""));
     }
     
     /**
@@ -275,10 +311,11 @@ public class JDialogComparar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button btnComparar;
-    private java.awt.Button btnConcatenar;
+    private javax.swing.JButton btnComparar;
+    private javax.swing.JButton btnConcatenar;
     private java.awt.Button btnProcurarArqA;
     private java.awt.Button btnProcurarArqB;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JPanel jPanel1;
     private java.awt.Label label2;
     private java.awt.Label lblArquivoB;
