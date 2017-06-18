@@ -1,7 +1,6 @@
 package br.unesp.rc.bibSys.businessObject;
 
 import br.unesp.rc.bibSys.beans.ReferenciaBeans;
-import br.unesp.rc.bibSys.beans.ReferenciaCompararBeans;
 import br.unesp.rc.bibSys.beans.ReferenciaConcatenarBeans;
 import java.io.IOException;
 import java.util.ArrayList;

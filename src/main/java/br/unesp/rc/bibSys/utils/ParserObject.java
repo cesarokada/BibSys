@@ -17,7 +17,7 @@ public final class ParserObject {
             return null;
         
         //Separa em linhas
-        String[] lines = element.split(System.getProperty("line.separator"));
+        String[] lines = element.split(System.lineSeparator());
         
         //Convert to List
         List<String> listLines = new ArrayList<>(Arrays.asList(lines));
