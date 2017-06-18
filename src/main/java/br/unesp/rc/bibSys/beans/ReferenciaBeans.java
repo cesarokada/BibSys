@@ -3,6 +3,20 @@ package br.unesp.rc.bibSys.beans;
 public class ReferenciaBeans{
 
     /**
+     * @return the journal
+     */
+    public String getJournal() {
+        return journal;
+    }
+
+    /**
+     * @param journal the journal to set
+     */
+    public void setJournal(String journal) {
+        this.journal = journal;
+    }
+
+    /**
      * @return the tipoReferencia
      */
     public String getTipoReferencia() {
@@ -512,24 +526,5 @@ public class ReferenciaBeans{
     private String affiliation;
     private String owner;
     private String timestamp;
-    
-    
-//    @Override
-//    public boolean equals(Object v) {
-//        boolean retVal = false;
-//
-//        if (v instanceof ReferenciaBeans){
-//            ReferenciaBeans ptr = (ReferenciaBeans) v;
-//            retVal = ptr.bibKey.equals(this.bibKey);
-//        }
-//
-//     return retVal;
-//  }
-//
-//    @Override
-//    public int hashCode() {
-//        int hash = 5;
-//        hash = 97 * hash + Objects.hashCode(this.bibKey);
-//        return hash;
-//    }
+    private String journal;
 }

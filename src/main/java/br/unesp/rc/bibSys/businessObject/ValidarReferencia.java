@@ -73,8 +73,6 @@ public class ValidarReferencia {
         }).forEachOrdered((line) -> {
             retorno.append(line).append(System.lineSeparator());
         });
-        
-
 
         return retorno.toString();
     }

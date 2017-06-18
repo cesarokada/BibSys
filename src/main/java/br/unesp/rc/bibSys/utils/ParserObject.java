@@ -29,7 +29,8 @@ public final class ParserObject {
         
         //Remove da lista primeira e última linha (cabeçalho e fim de chaves)
         listLines.remove(0);
-        listLines.remove(listLines.size() - 1);
+        if(listLines.get(listLines.size() - 1).trim().equals("\\}"))
+            listLines.remove(listLines.size() - 1);
         
         //seta os Atributos do objeto
         for(String line : listLines){
