@@ -1,9 +1,10 @@
 package br.unesp.rc.bibSys.utils;
+import br.unesp.rc.bibSys.apresentacao.JDialogComparar;
+import br.unesp.rc.bibSys.apresentacao.JDialogSobre;
+import br.unesp.rc.bibSys.apresentacao.MainJFrame;
 import java.awt.*;
 import java.awt.event.*;
-import java.net.URL;
 import javax.swing.*;
-import br.unesp.rc.bibSys.images;
 public class TrayGUI {
 public static void tray_manager() {
 
@@ -40,29 +41,24 @@ final TrayIcon trayIcon = new TrayIcon(createImage("bulb.gif", "tray icon"));
 final SystemTray tray = SystemTray.getSystemTray();
 
 // Create a popup menu components
-MenuItem aboutItem = new MenuItem("About");
-CheckboxMenuItem cb1 = new CheckboxMenuItem("Set auto size");
-CheckboxMenuItem cb2 = new CheckboxMenuItem("Set tooltip");
-Menu displayMenu = new Menu("Display");
-MenuItem errorItem = new MenuItem("Error");
-MenuItem warningItem = new MenuItem("Warning");
-MenuItem infoItem = new MenuItem("Info");
-MenuItem noneItem = new MenuItem("None");
-MenuItem exitItem = new MenuItem("Exit");
+MenuItem sobreItem = new MenuItem("Sobre");
+MenuItem novoItem = new MenuItem("Novo");
+MenuItem abrirItem = new MenuItem("Abrir");
+MenuItem compararItem = new MenuItem("Comparar");
+MenuItem sair= new MenuItem("Sair");
 
 //Add components to popup menu
-popup.add(aboutItem);
-popup.addSeparator();
-popup.add(cb1);
-popup.add(cb2);
-popup.addSeparator();
-popup.add(displayMenu);
-displayMenu.add(errorItem);
-displayMenu.add(warningItem);
-displayMenu.add(infoItem);
-displayMenu.add(noneItem);
-popup.add(exitItem);
 
+
+
+popup.add(abrirItem);
+popup.add(novoItem);
+popup.addSeparator();
+popup.add(compararItem);
+popup.addSeparator();
+popup.add(sobreItem);
+popup.addSeparator();
+popup.add(sair);
 trayIcon.setPopupMenu(popup);
 try {
 tray.add(trayIcon);
@@ -76,69 +72,40 @@ JOptionPane.showMessageDialog(null,
 "This dialog box is run from System Tray");
 }
 });
-aboutItem.addActionListener(new ActionListener() {
+sobreItem.addActionListener(new ActionListener() {
 public void actionPerformed(ActionEvent e) {
-JOptionPane.showMessageDialog(null,
-"This dialog box is run from the About menu item");
+    JDialog Sobre= new JDialogSobre(null,true);
+        Sobre.pack();
+        Sobre.setVisible(true);
 }
 });
-
-cb1.addItemListener(new ItemListener() {
-public void itemStateChanged(ItemEvent e) {
-int cb1Id = e.getStateChange();
-if (cb1Id == ItemEvent.SELECTED){
-trayIcon.setImageAutoSize(true);
-} else {
-trayIcon.setImageAutoSize(false);
-}
-}
-});
-
-cb2.addItemListener(new ItemListener() {
-public void itemStateChanged(ItemEvent e) {
-int cb2Id = e.getStateChange();
-if (cb2Id == ItemEvent.SELECTED){
-trayIcon.setToolTip("Sun TrayIcon");
-} else {
-trayIcon.setToolTip(null);
-}
-}
-});
-
-ActionListener listener = new ActionListener() {
+novoItem.addActionListener(new ActionListener() {
 public void actionPerformed(ActionEvent e) {
-MenuItem item = (MenuItem)e.getSource();
-//TrayIcon.MessageType type = null;
-System.out.println(item.getLabel());
-if ("Error".equals(item.getLabel())) {
-//type = TrayIcon.MessageType.ERROR;
-trayIcon.displayMessage("Sun TrayIcon Demo",
-"This is an error message", TrayIcon.MessageType.ERROR);
-
-} else if ("Warning".equals(item.getLabel())) {
-//type = TrayIcon.MessageType.WARNING;
-trayIcon.displayMessage("Sun TrayIcon Demo",
-"This is a warning message", TrayIcon.MessageType.WARNING);
-
-} else if ("Info".equals(item.getLabel())) {
-//type = TrayIcon.MessageType.INFO;
-trayIcon.displayMessage("Sun TrayIcon Demo",
-"This is an info message", TrayIcon.MessageType.INFO);
-
-} else if ("None".equals(item.getLabel())) {
-//type = TrayIcon.MessageType.NONE;
-trayIcon.displayMessage("Sun TrayIcon Demo",
-"This is an ordinary message", TrayIcon.MessageType.NONE);
+     EditorTexto doc = new EditorTexto(false, "");
 }
+});
+compararItem.addActionListener(new ActionListener() {
+public void actionPerformed(ActionEvent e) {
+     JDialog frameComparar = new JDialogComparar(null,true);
+        frameComparar.pack();
+        frameComparar.setVisible(true);
 }
-};
+});
 
-errorItem.addActionListener(listener);
-warningItem.addActionListener(listener);
-infoItem.addActionListener(listener);
-noneItem.addActionListener(listener);
+abrirItem.addActionListener(new ActionListener() {
+public void actionPerformed(ActionEvent e) {
+          
+        JFileChooser chooser = new JFileChooser();
+        String path = "";
+                
+        if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) 
+            path = chooser.getSelectedFile().toString();
+        
+        EditorTexto doc = new EditorTexto(true, path);
+}
+});
 
-exitItem.addActionListener(new ActionListener() {
+sair.addActionListener(new ActionListener() {
 public void actionPerformed(ActionEvent e) {
 tray.remove(trayIcon);
 System.exit(0);
