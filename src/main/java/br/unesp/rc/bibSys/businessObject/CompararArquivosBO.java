@@ -30,9 +30,10 @@ public class CompararArquivosBO {
      */
     public ReferenciaCompararBeans compararArquivos(String pathArquivoA, String pathArquivoB) throws IOException{
         ReferenciaCompararBeans retorno = new ReferenciaCompararBeans();
+        PreencherObjetoBO preencherObjeto = new PreencherObjetoBO();
         
-        List<ReferenciaBeans> listaRefA = montarObjetoReferencia(pathArquivoA);
-        List<ReferenciaBeans> listaRefB = montarObjetoReferencia(pathArquivoB);
+        List<ReferenciaBeans> listaRefA = preencherObjeto.montarObjetoReferencia(pathArquivoA);
+        List<ReferenciaBeans> listaRefB = preencherObjeto.montarObjetoReferencia(pathArquivoB);
         
         //Retorna referências que estão em A e não em B
         List<ReferenciaBeans> retornoListA = retornarDiferencas(listaRefA, listaRefB);
@@ -41,32 +42,6 @@ public class CompararArquivosBO {
         
         retorno.setReferenciasA(retornoListA);
         retorno.setReferenciasB(retornoListB);
-        
-        return retorno;
-    }
-    
-
-    public List<ReferenciaBeans> montarObjetoReferencia(String pathArquivo) throws IOException{
-        String contentFile = ArquivosUtils.lerArquivo(pathArquivo);
-        
-        if(contentFile.equals(""))
-            return null;
-        
-        ValidarReferencia validador = new ValidarReferencia();
-        List<String> refList = Arrays.asList(contentFile.split("@"));
-        List<ReferenciaBeans> retorno = new ArrayList<>();
-                
-        try {
-            for(String ref : refList){
-                if(!ref.trim().equals("")){
-                    ref = validador.retirarEspacosChaves(ref);
-                    ReferenciaBeans objReferencia = ParserObject.stringToObject(ref);
-                    retorno.add(objReferencia);
-                }
-            }
-        } catch (NoSuchMethodException | IllegalAccessException | IllegalArgumentException | NoSuchFieldException | InvocationTargetException ex) {
-            Logger.getLogger(PadronizarBO.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
         return retorno;
     }

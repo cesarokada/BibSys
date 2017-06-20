@@ -1,6 +1,6 @@
 package br.unesp.rc.bibSys.beans;
 
-public class ReferenciaBeans{
+public class ReferenciaBeans implements Comparable<ReferenciaBeans>{
 
     /**
      * @return the journal
@@ -527,4 +527,9 @@ public class ReferenciaBeans{
     private String owner;
     private String timestamp;
     private String journal;
+
+    @Override
+    public int compareTo(ReferenciaBeans o) {
+        return (this.getBibKey().compareTo(o.bibKey));
+    }
 }

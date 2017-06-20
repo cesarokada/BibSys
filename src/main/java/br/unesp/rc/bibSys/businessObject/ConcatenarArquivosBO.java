@@ -10,10 +10,11 @@ public class ConcatenarArquivosBO {
     
     public List<ReferenciaConcatenarBeans> concatenarArquivos(String pathArquivoA, String pathArquivoB) throws IOException{
         List<ReferenciaConcatenarBeans> retorno = new ArrayList<>();
+        PreencherObjetoBO preencherObjeto = new PreencherObjetoBO();
         CompararArquivosBO compararBO = new CompararArquivosBO();
         
-        List<ReferenciaBeans> listaRefA = compararBO.montarObjetoReferencia(pathArquivoA);
-        List<ReferenciaBeans> listaRefB = compararBO.montarObjetoReferencia(pathArquivoB);
+        List<ReferenciaBeans> listaRefA = preencherObjeto.montarObjetoReferencia(pathArquivoA);
+        List<ReferenciaBeans> listaRefB = preencherObjeto.montarObjetoReferencia(pathArquivoB);
         
         listaRefA.forEach((t) -> {
             ReferenciaConcatenarBeans item = new ReferenciaConcatenarBeans();
