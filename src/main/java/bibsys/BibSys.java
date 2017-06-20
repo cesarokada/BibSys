@@ -20,9 +20,7 @@ public class BibSys {
        
         frame.setVisible(false);
          TrayGUI.tray_manager();
-        JFrame frame_p = new MainJFrame();
-       frame_p.pack();
-       frame_p.setVisible(true);
+       
     }
     
 }

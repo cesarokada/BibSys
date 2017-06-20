@@ -27,6 +27,7 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         txaDisplay.setEnabled(false);
         ManagerGUI.centralizar(this);
+       
     }
 
     /**
@@ -56,6 +57,11 @@ public class MainJFrame extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -222,9 +228,9 @@ public class MainJFrame extends javax.swing.JFrame {
         String path = "";
                 
         if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) 
-            path = chooser.getSelectedFile().toString();
+        {path = chooser.getSelectedFile().toString();
         
-        EditorTexto doc = new EditorTexto(true, path);
+        EditorTexto doc = new EditorTexto(true, path);}
     }//GEN-LAST:event_jmiAbrirActionPerformed
 
     private void jmiCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCompararActionPerformed
@@ -232,6 +238,10 @@ public class MainJFrame extends javax.swing.JFrame {
         frameComparar.pack();
         frameComparar.setVisible(true);
     }//GEN-LAST:event_jmiCompararActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

@@ -6,6 +6,17 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 public class TrayGUI {
+
+   
+
+    private static MainJFrame frame_p = new MainJFrame();
+  
+    private static  JDialog Sobre= new JDialogSobre(null,true);
+
+     private static JDialog frameComparar = new JDialogComparar(null,true);
+
+     
+      
 public static void tray_manager() {
 
 try {
@@ -68,42 +79,48 @@ return;
 }
 trayIcon.addActionListener(new ActionListener() {
 public void actionPerformed(ActionEvent e) {
-JOptionPane.showMessageDialog(null,
-"This dialog box is run from System Tray");
+  frame_p.setVisible(true);
+  frame_p.toFront();
+    
 }
 });
 sobreItem.addActionListener(new ActionListener() {
 public void actionPerformed(ActionEvent e) {
-    JDialog Sobre= new JDialogSobre(null,true);
+   
         Sobre.pack();
         Sobre.setVisible(true);
 }
 });
 novoItem.addActionListener(new ActionListener() {
 public void actionPerformed(ActionEvent e) {
+     
      EditorTexto doc = new EditorTexto(false, "");
+}
+});
+abrirItem.addActionListener(new ActionListener() {
+public void actionPerformed(ActionEvent e) {
+     JFileChooser chooser = new JFileChooser();
+        String path = "";
+                
+        if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) 
+        {path = chooser.getSelectedFile().toString();
+        frame_p.setVisible(true);
+        EditorTexto doc = new EditorTexto(true, path);
+        
+        }
+  
 }
 });
 compararItem.addActionListener(new ActionListener() {
 public void actionPerformed(ActionEvent e) {
-     JDialog frameComparar = new JDialogComparar(null,true);
+    
+  
         frameComparar.pack();
+        frame_p.setVisible(true);
         frameComparar.setVisible(true);
 }
 });
 
-abrirItem.addActionListener(new ActionListener() {
-public void actionPerformed(ActionEvent e) {
-          
-        JFileChooser chooser = new JFileChooser();
-        String path = "";
-                
-        if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) 
-            path = chooser.getSelectedFile().toString();
-        
-        EditorTexto doc = new EditorTexto(true, path);
-}
-});
 
 sair.addActionListener(new ActionListener() {
 public void actionPerformed(ActionEvent e) {

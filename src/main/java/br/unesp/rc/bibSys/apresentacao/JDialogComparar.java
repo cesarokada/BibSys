@@ -11,6 +11,7 @@ import br.unesp.rc.bibSys.businessObject.CompararArquivosBO;
 import br.unesp.rc.bibSys.businessObject.ConcatenarArquivosBO;
 import br.unesp.rc.bibSys.utils.ArquivosUtils;
 import br.unesp.rc.bibSys.utils.ManagerGUI;
+import static br.unesp.rc.bibSys.utils.ManagerGUI.centralizar;
 import br.unesp.rc.bibSys.utils.ParserBibTex;
 import java.io.IOException;
 import java.util.List;
@@ -29,6 +30,7 @@ public class JDialogComparar extends javax.swing.JDialog {
     public JDialogComparar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        centralizar(this);
         gerenciarVisibilidadeBotaoComparar();
         gerenciarVisibilidadeBotaoConcatenar();
     }
