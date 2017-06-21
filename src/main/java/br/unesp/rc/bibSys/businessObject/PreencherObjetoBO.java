@@ -21,6 +21,14 @@ import java.util.logging.Logger;
  * @author Cesar
  */
 public class PreencherObjetoBO {
+    /**
+     * Dado o caminho do arquivo como referência, retorna uma lista de objetos 
+     * ReferenciaBeans com as referências bibsys encontradas no arquivo
+     * 
+     * @param pathArquivo caminho do arquivo
+     * @return lista de objetos ReferenciaBeans
+     * @throws IOException 
+     */
         public List<ReferenciaBeans> montarObjetoReferencia(String pathArquivo) throws IOException{
         String contentFile = ArquivosUtils.lerArquivo(pathArquivo);
         

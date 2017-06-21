@@ -10,6 +10,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PadronizarBO {
+    /**
+     * Dado uma String de referência, retorna uma String contendo todas as referências
+     * padronizadas
+     * 
+     * @param txt
+     * @return 
+     */
     public String padronizar(String txt){
         StringBuilder retorno = new StringBuilder();
         ValidarReferencia validador = new ValidarReferencia();

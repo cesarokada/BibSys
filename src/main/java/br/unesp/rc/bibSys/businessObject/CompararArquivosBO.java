@@ -20,12 +20,12 @@ import java.util.logging.Logger;
 public class CompararArquivosBO {
  
     /**
-     * Retorna um objeto ReferenciaCompararBeans contendo duas listar de referências, 
+     * Retorna um objeto ReferenciaCompararBeans contendo duas listas de referências, 
      * uma referente ao arquivo A e outra do arquivo B.
      * 
      * @param pathArquivoA caminho do arquivo A
      * @param pathArquivoB caminho do arquivo B
-     * @return
+     * @return objeto ReferenciaCompararBeans
      * @throws IOException 
      */
     public ReferenciaCompararBeans compararArquivos(String pathArquivoA, String pathArquivoB) throws IOException{
@@ -46,6 +46,14 @@ public class CompararArquivosBO {
         return retorno;
     }
     
+    /**
+     * Retorna uma lista de ReferenciaBeans contendo os itens distoantes entre
+     * duas outras listas de ReferenciaBeans.
+     * 
+     * @param listaA lista ReferenciaBeans A
+     * @param listaB lsita ReferenciaBeans B
+     * @return lista de ReferenciaBeans com os objetos distoantes 
+     */
     public List<ReferenciaBeans> retornarDiferencas(List<ReferenciaBeans> listaA, List<ReferenciaBeans> listaB){
         
         List<ReferenciaBeans> retornoList = new ArrayList<>();

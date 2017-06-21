@@ -15,6 +15,14 @@ import java.util.List;
  * @author Cesar
  */
 public class GerarBibKeyBO {
+    /**
+     * Retorna uma lista de objetos ReferenciaBeans com as possíves duplicatas de
+     * bibkey concatenadas por letras à partir do 'a' para diferenciá-las, dado uma
+     * lista de objetos ReferenciaBeans
+     * 
+     * @param refList
+     * @return ma lista de objetos ReferenciaBeans com as possíveis duplicatas tratadas
+     */
     public List<ReferenciaBeans> gerarBibSysAutomaricamente(List<ReferenciaBeans> refList){
         
         refList.forEach((t) -> {
@@ -30,7 +38,21 @@ public class GerarBibKeyBO {
         
         return refList;
     }
-    
+    /**
+     * Retona uma string que contém o 'Sobrenome do Primeiro Autor .etal: Ano'
+     * caso haja 3 ou mais autores
+     * 
+     * Retona uma string que contém o 'Sobrenome do Primeiro Autor .Sobrenome do Segundo Autor: Ano'
+     * caso haja 2 autores
+     * 
+     * Retona uma string que contém o 'Sobrenome do Primeiro Autor : Ano'
+     * caso haja 1 autores
+     * 
+     * tendo como base um objeto ReferenciaBeans
+     * 
+     * @param ref objeto ReferenciaBeans
+     * @return String seguindo as condições descritas
+     */
     private String gerarBibSys(ReferenciaBeans ref){
         StringBuilder retorno = new StringBuilder();
         
@@ -49,14 +71,27 @@ public class GerarBibKeyBO {
         
         return retorno.toString();
     }
-    
+    /**
+     * Retorna uma String contendo o sobrenome, dado uma String com o nome completo
+     * 
+     * @param nomeCompleto String contendo o nome completo
+     * @return String contendo o sobrenome
+     */
     private String getSobrenome(String nomeCompleto){
         if(nomeCompleto.trim().contains(" "))
             return nomeCompleto.trim().split(" ")[0].trim();
         else
             return nomeCompleto.trim();
     }
-    
+    /**
+     * Verifica a existência de uma referência bibkey, dado uma String da qual se
+     * deseja analisar e uma lista de objetos ReferenciaBeans, retornando verdadeiro
+     * caso exista ocorrencia da String na lista
+     * 
+     * @param bibKey String contendo a referência bibkey
+     * @param refList lista de objetos ReferenciaBeans
+     * @return verdadeiro caso exista ocorrência da String na lsita de ReferenciaBeans
+     */
     private boolean verificarExistenciaBibKey(String bibKey, List<ReferenciaBeans> refList){
         boolean existInList = false;
         

@@ -8,6 +8,16 @@ import java.util.List;
 
 public class ConcatenarArquivosBO {
     
+    /**
+     * Retorna uma lista de objetos ReferenciaConcatenarBeans que concatena dois
+     * arquivos .bib com suas respectivas referências de arquivo (codigoArquivo)
+     * através de seu caminho
+     * 
+     * @param pathArquivoA caminho do arquivo A
+     * @param pathArquivoB caminho do arquivo B
+     * @return lista de objetos ReferenciaConcatenarBeans
+     * @throws IOException 
+     */
     public List<ReferenciaConcatenarBeans> concatenarArquivos(String pathArquivoA, String pathArquivoB) throws IOException{
         List<ReferenciaConcatenarBeans> retorno = new ArrayList<>();
         PreencherObjetoBO preencherObjeto = new PreencherObjetoBO();

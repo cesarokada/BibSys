@@ -16,6 +16,14 @@ import java.util.List;
  * @author Cesar
  */
 public class OrdenarArquivoBO {
+    /**
+     * Retorna uma lista de objetos ReferenciaBeans ordenados, dado um caminho de
+     * arquivo
+     * 
+     * @param pathArquivo caminho do arquivo
+     * @return lista de objetos ReferenciaBeans ordenados
+     * @throws IOException 
+     */
     public List<ReferenciaBeans> ordenarArquivo(String pathArquivo) throws IOException{
         PreencherObjetoBO preencherBO = new PreencherObjetoBO();
         
