@@ -119,7 +119,7 @@ public class JDialogComparar extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtArquivoA, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnProcurarArqA, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                        .addComponent(btnProcurarArqA, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
                         .addGap(10, 10, 10))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

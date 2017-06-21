@@ -6,7 +6,9 @@
 package br.unesp.rc.bibSys.apresentacao;
 
 import br.unesp.rc.bibSys.beans.ReferenciaBeans;
+import br.unesp.rc.bibSys.businessObject.GerarBibKeyBO;
 import br.unesp.rc.bibSys.businessObject.OrdenarArquivoBO;
+import br.unesp.rc.bibSys.businessObject.PreencherObjetoBO;
 import br.unesp.rc.bibSys.utils.ArquivosUtils;
 import br.unesp.rc.bibSys.utils.ManagerGUI;
 import br.unesp.rc.bibSys.utils.ParserBibTex;
@@ -19,12 +21,12 @@ import java.util.logging.Logger;
  *
  * @author Cesar
  */
-public class JDialogOrdenar extends javax.swing.JDialog {
+public class JDialogGerarBibKey extends javax.swing.JDialog {
 
     /**
      * Creates new form JDialogOrdenar
      */
-    public JDialogOrdenar(java.awt.Frame parent, boolean modal) {
+    public JDialogGerarBibKey(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         habilitarBotaoOrdenar();
@@ -32,11 +34,11 @@ public class JDialogOrdenar extends javax.swing.JDialog {
     }
     
     private void habilitarBotaoSalvar(){
-        btnSalvar.setEnabled(!txtPathArquivo.getText().equals("") && !txtOrdenar.getText().trim().equals(""));
+        btnSalvar.setEnabled(!txtPathArquivo.getText().equals("") && !txtBibKeyGerado.getText().trim().equals(""));
     }
 
     private void habilitarBotaoOrdenar(){
-        btnOrdenar.setEnabled(!txtPathArquivo.getText().equals(""));
+        btnGerarBibKey.setEnabled(!txtPathArquivo.getText().equals(""));
     }    
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,10 +52,10 @@ public class JDialogOrdenar extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         txtPathArquivo = new javax.swing.JTextField();
         btnProcurar = new javax.swing.JButton();
-        btnOrdenar = new javax.swing.JButton();
+        btnGerarBibKey = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtOrdenar = new javax.swing.JTextArea();
+        txtBibKeyGerado = new javax.swing.JTextArea();
         btnSalvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -67,16 +69,16 @@ public class JDialogOrdenar extends javax.swing.JDialog {
             }
         });
 
-        btnOrdenar.setText("Ordenar");
-        btnOrdenar.addActionListener(new java.awt.event.ActionListener() {
+        btnGerarBibKey.setText("Gerar Chave");
+        btnGerarBibKey.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrdenarActionPerformed(evt);
+                btnGerarBibKeyActionPerformed(evt);
             }
         });
 
-        txtOrdenar.setColumns(20);
-        txtOrdenar.setRows(5);
-        jScrollPane1.setViewportView(txtOrdenar);
+        txtBibKeyGerado.setColumns(20);
+        txtBibKeyGerado.setRows(5);
+        jScrollPane1.setViewportView(txtBibKeyGerado);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -112,7 +114,7 @@ public class JDialogOrdenar extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnProcurar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnOrdenar))
+                        .addComponent(btnGerarBibKey))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSalvar)
                         .addGap(0, 608, Short.MAX_VALUE)))
@@ -125,7 +127,7 @@ public class JDialogOrdenar extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPathArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProcurar)
-                    .addComponent(btnOrdenar))
+                    .addComponent(btnGerarBibKey))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
@@ -158,37 +160,39 @@ public class JDialogOrdenar extends javax.swing.JDialog {
         
         if(!txtPathArquivo.getText().trim().equals(""))
             try {
-                txtOrdenar.setText(ArquivosUtils.lerArquivo(txtPathArquivo.getText()));
+                txtBibKeyGerado.setText(ArquivosUtils.lerArquivo(txtPathArquivo.getText()));
         } catch (IOException ex) {
-            Logger.getLogger(JDialogOrdenar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JDialogGerarBibKey.class.getName()).log(Level.SEVERE, null, ex);
         }
         habilitarBotaoOrdenar();
         habilitarBotaoSalvar();
     }//GEN-LAST:event_btnProcurarActionPerformed
 
-    private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
-        OrdenarArquivoBO ordenarBO = new OrdenarArquivoBO();
+    private void btnGerarBibKeyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarBibKeyActionPerformed
+        GerarBibKeyBO geradorBO = new GerarBibKeyBO();
+        PreencherObjetoBO preencherBO = new PreencherObjetoBO();
         StringBuilder retorno = new StringBuilder();
         
         try {
-            List<ReferenciaBeans> sortedList = ordenarBO.ordenarArquivo(txtPathArquivo.getText());
+            List<ReferenciaBeans> refList = preencherBO.montarObjetoReferencia(txtPathArquivo.getText());
+            List<ReferenciaBeans> recommendedList = geradorBO.gerarBibSysAutomaricamente(refList);
             
-            sortedList.forEach((t) -> {
+            recommendedList.forEach((t) -> {
                 retorno.append(ParserBibTex.jsonToBibTex(t)).append(System.lineSeparator());
             });
 
-            txtOrdenar.setText(retorno.toString());
+            txtBibKeyGerado.setText(retorno.toString());
             habilitarBotaoSalvar();
         } catch (IOException ex) {
-            Logger.getLogger(JDialogOrdenar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JDialogGerarBibKey.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnOrdenarActionPerformed
+    }//GEN-LAST:event_btnGerarBibKeyActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         try {
-            ArquivosUtils.escreverArquivo(txtPathArquivo.getText(), txtOrdenar.getText());
+            ArquivosUtils.escreverArquivo(txtPathArquivo.getText(), txtBibKeyGerado.getText());
         } catch (IOException ex) {
-            Logger.getLogger(JDialogOrdenar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JDialogGerarBibKey.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -209,20 +213,21 @@ public class JDialogOrdenar extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDialogOrdenar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogGerarBibKey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDialogOrdenar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogGerarBibKey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDialogOrdenar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogGerarBibKey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDialogOrdenar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogGerarBibKey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDialogOrdenar dialog = new JDialogOrdenar(new javax.swing.JFrame(), true);
+                JDialogGerarBibKey dialog = new JDialogGerarBibKey(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -235,13 +240,13 @@ public class JDialogOrdenar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnOrdenar;
+    private javax.swing.JButton btnGerarBibKey;
     private javax.swing.JButton btnProcurar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea txtOrdenar;
+    private javax.swing.JTextArea txtBibKeyGerado;
     private javax.swing.JTextField txtPathArquivo;
     // End of variables declaration//GEN-END:variables
 }

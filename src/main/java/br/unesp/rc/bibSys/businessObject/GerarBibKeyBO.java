@@ -15,14 +15,16 @@ import java.util.List;
  * @author Cesar
  */
 public class GerarBibKeyBO {
+
     /**
-     * Retorna uma lista de objetos ReferenciaBeans com as possíves duplicatas de
+    * Retorna uma lista de objetos ReferenciaBeans com as possíves duplicatas de
      * bibkey concatenadas por letras à partir do 'a' para diferenciá-las, dado uma
      * lista de objetos ReferenciaBeans
      * 
      * @param refList
-     * @return ma lista de objetos ReferenciaBeans com as possíveis duplicatas tratadas
+     * @return uma lista de objetos ReferenciaBeans com as possíveis duplicatas tratadas
      */
+
     public List<ReferenciaBeans> gerarBibSysAutomaricamente(List<ReferenciaBeans> refList){
         
         refList.forEach((t) -> {
