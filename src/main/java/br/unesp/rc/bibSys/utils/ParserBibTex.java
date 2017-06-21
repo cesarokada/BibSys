@@ -8,12 +8,22 @@ import java.util.Map;
 public final class ParserBibTex {
 
     private static final int _lengthNormalizer = 16;
-    
+    /**
+     * Transforma objeto em Json
+     * @param <T>
+     * @param objeto
+     * @return 
+     */
     private static <T> String objectToJson (T objeto){
         Gson gson = new Gson();
         return gson.toJson(objeto);
     }
-    
+    /**
+     * Transforma um Json em bibkey
+     * @param <T>
+     * @param objeto
+     * @return 
+     */
     public static <T> String jsonToBibTex(T objeto){
         String strJson = ParserBibTex.objectToJson(objeto);
         
@@ -22,7 +32,11 @@ public final class ParserBibTex {
         
         return dictionaryToText(jsonDictionary);
     }
-
+    /**
+     * Constroi uma String de bibkeys dado uma Map<String, String>
+     * @param dictionary Map<String,String>
+     * @return String com as bibkeys
+     */
     private static String dictionaryToText(Map<String, String> dictionary) {
         StringBuilder result = new StringBuilder();
         
@@ -44,7 +58,11 @@ public final class ParserBibTex {
 
         return result.toString();
     }
-
+    /**
+     * Preenche a quantidade de espaços para o padrão bibkey
+     * @param key String de referência
+     * @return String tratada
+     */
     private static String normalizeKeyTag(String key) {
         StringBuilder result = new StringBuilder();
         

@@ -9,7 +9,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ArquivosUtils {
-
+    /**
+     * Escreve o conteudo dado no arquivo do caminho fornecido
+     * 
+     * @param path caminho do arquivo
+     * @param conteudo conteudo a ser escrito
+     * @return String com caminho do arquivo
+     * @throws IOException 
+     */
     public static String escreverArquivo(String path, String conteudo) throws IOException{
         //Abre o arquivo
         File file = new File(path);
@@ -19,7 +26,14 @@ public class ArquivosUtils {
         
         return file.getPath();
     }
-    
+    /**
+     * Dado o caminho do arquivo, faz a leitura retornando em uma String
+     * 
+     * @param path caminho do arquivo
+     * @return String com o conteudo
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public static String lerArquivo(String path) throws FileNotFoundException, IOException{
         
         FileInputStream fstream = new FileInputStream(path);

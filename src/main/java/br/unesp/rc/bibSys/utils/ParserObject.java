@@ -8,7 +8,18 @@ import java.util.List;
 import org.apache.commons.beanutils.BeanUtils;
 
 public final class ParserObject {
-    
+    /**
+     * Dado uma String, tranforma a mesma em objeto, retornando um 
+     * objeto ReferenciaBeans
+     * 
+     * @param element String a ser transformada 
+     * @return objeto ReferenciaBeans
+     * @throws NoSuchMethodException
+     * @throws IllegalAccessException
+     * @throws IllegalArgumentException
+     * @throws NoSuchFieldException
+     * @throws InvocationTargetException 
+     */
     public static ReferenciaBeans stringToObject(String element) throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, NoSuchFieldException, InvocationTargetException{
                 
         ReferenciaBeans referencia = new ReferenciaBeans();

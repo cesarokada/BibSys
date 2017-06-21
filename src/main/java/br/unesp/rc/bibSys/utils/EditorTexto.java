@@ -21,7 +21,12 @@ public class EditorTexto extends JFrame implements ActionListener
     
     private String _pathFile = "";
 
-
+    /**
+     * Operações elementares para editar textos nos JDialog
+     * 
+     * @param isEditar boolean de controle
+     * @param path caminho do arquivo
+     */
     public EditorTexto(boolean isEditar, String path){
         super("Document");
         setSize(600, 600);
@@ -91,7 +96,12 @@ public class EditorTexto extends JFrame implements ActionListener
         
         EscreverArquivo(isEditar, path);
     }
-
+    /**
+     * Escreve no arquivo dado o caminho caso isEditar for verdadeiro
+     * 
+     * @param isEditar boolean de controle
+     * @param path caminho do arquivo
+     */
     private void EscreverArquivo(boolean isEditar, String path) {
         _pathFile = isEditar ? path : "";
         if(isEditar){
