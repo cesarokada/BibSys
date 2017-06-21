@@ -7,7 +7,6 @@ package br.unesp.rc.bibSys.apresentacao;
 
 import br.unesp.rc.bibSys.beans.ReferenciaBeans;
 import br.unesp.rc.bibSys.businessObject.GerarBibKeyBO;
-import br.unesp.rc.bibSys.businessObject.OrdenarArquivoBO;
 import br.unesp.rc.bibSys.businessObject.PreencherObjetoBO;
 import br.unesp.rc.bibSys.utils.ArquivosUtils;
 import br.unesp.rc.bibSys.utils.ManagerGUI;
@@ -29,6 +28,7 @@ public class JDialogGerarBibKey extends javax.swing.JDialog {
     public JDialogGerarBibKey(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        ManagerGUI.centralizar(this);
         habilitarBotaoOrdenar();
         habilitarBotaoSalvar();
     }

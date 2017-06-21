@@ -6,7 +6,6 @@
 package br.unesp.rc.bibSys.apresentacao;
 
 import br.unesp.rc.bibSys.utils.ManagerGUI;
-import javax.swing.JFrame;
 
 /**
  *

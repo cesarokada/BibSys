@@ -92,7 +92,6 @@ public class ValidarReferencia {
                 line = line.replaceAll("\"", "");
                 line = line.replaceAll(System.lineSeparator(), "");
                 line = line.replaceAll("\\t", "");
-                line = line.replaceAll(",", "");
             }
             return line;
         }).forEachOrdered((line) -> {

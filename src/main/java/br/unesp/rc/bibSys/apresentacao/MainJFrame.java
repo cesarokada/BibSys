@@ -5,12 +5,8 @@
  */
 package br.unesp.rc.bibSys.apresentacao;
 
-import br.unesp.rc.bibSys.utils.ArquivosUtils;
 import br.unesp.rc.bibSys.utils.EditorTexto;
 import br.unesp.rc.bibSys.utils.ManagerGUI;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 

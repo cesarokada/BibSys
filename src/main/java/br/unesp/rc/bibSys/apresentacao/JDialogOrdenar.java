@@ -27,6 +27,7 @@ public class JDialogOrdenar extends javax.swing.JDialog {
     public JDialogOrdenar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        ManagerGUI.centralizar(this);
         habilitarBotaoOrdenar();
         habilitarBotaoSalvar();
     }

@@ -80,10 +80,16 @@ public class GerarBibKeyBO {
      * @return String contendo o sobrenome
      */
     private String getSobrenome(String nomeCompleto){
-        if(nomeCompleto.trim().contains(" "))
-            return nomeCompleto.trim().split(" ")[0].trim();
+        String nomeRetorno;
+        
+        if(nomeCompleto.trim().contains(","))
+            nomeRetorno = nomeCompleto.trim().split(",")[0].trim();
+        else if(nomeCompleto.trim().contains(" "))
+            nomeRetorno = nomeCompleto.trim().split(" ")[1].trim();
         else
-            return nomeCompleto.trim();
+            nomeRetorno = nomeCompleto.trim();
+        
+        return nomeRetorno;
     }
     /**
      * Verifica a existência de uma referência bibkey, dado uma String da qual se
