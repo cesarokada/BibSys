@@ -15,6 +15,12 @@ import java.util.List;
  * @author Cesar
  */
 public class GerarBibKeyBO {
+
+    /**
+     *
+     * @param refList
+     * @return
+     */
     public List<ReferenciaBeans> gerarBibSysAutomaricamente(List<ReferenciaBeans> refList){
         
         refList.forEach((t) -> {

@@ -16,9 +16,6 @@ public class ConcatenarArquivosBO {
         List<ReferenciaBeans> listaRefA = preencherObjeto.montarObjetoReferencia(pathArquivoA);
         List<ReferenciaBeans> listaRefB = preencherObjeto.montarObjetoReferencia(pathArquivoB);
         
-//        GerarBibKeyBO gerar = new GerarBibKeyBO();
-//        listaRefA = gerar.gerarBibSysAutomaricamente(listaRefA);
-        
         listaRefA.forEach((t) -> {
             ReferenciaConcatenarBeans item = new ReferenciaConcatenarBeans();
             item.setReferencia(t);

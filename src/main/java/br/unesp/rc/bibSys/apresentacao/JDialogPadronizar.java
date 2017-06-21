@@ -126,10 +126,10 @@ public class JDialogPadronizar extends javax.swing.JDialog {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(228, Short.MAX_VALUE)
-                .addComponent(btnTransformar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTransformar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvar)
-                .addGap(149, 149, 149))
+                .addGap(180, 180, 180))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

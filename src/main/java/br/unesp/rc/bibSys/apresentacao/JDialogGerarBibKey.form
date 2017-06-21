@@ -55,7 +55,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnProcurar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnOrdenar" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnGerarBibKey" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
@@ -73,7 +73,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtPathArquivo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnProcurar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnOrdenar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnGerarBibKey" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
@@ -98,12 +98,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProcurarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnOrdenar">
+        <Component class="javax.swing.JButton" name="btnGerarBibKey">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ordenar"/>
+            <Property name="text" type="java.lang.String" value="Gerar Chave"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrdenarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGerarBibKeyActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
@@ -132,7 +132,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="txtOrdenar">
+                <Component class="javax.swing.JTextArea" name="txtBibKeyGerado">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
