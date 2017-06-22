@@ -35,6 +35,7 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -47,10 +48,13 @@ public class MainJFrame extends javax.swing.JFrame {
         jmiPadronizar = new javax.swing.JMenuItem();
         jmiComparar = new javax.swing.JMenuItem();
         jmiConcatenar = new javax.swing.JMenuItem();
+        jmiGerarChave = new javax.swing.JMenuItem();
         jmiOrdenar = new javax.swing.JMenuItem();
         jmiSair = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -132,7 +136,20 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         jMenu2.add(jmiConcatenar);
 
+        jmiGerarChave.setText("Gerar Chave");
+        jmiGerarChave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGerarChaveActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiGerarChave);
+
         jmiOrdenar.setText("Ordenar");
+        jmiOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiOrdenarActionPerformed(evt);
+            }
+        });
         jMenu2.add(jmiOrdenar);
 
         jmiSair.setText("Sair");
@@ -191,7 +208,9 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiSairActionPerformed
 
     private void jmiConcatenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConcatenarActionPerformed
-        // TODO add your handling code here:
+        JDialog frameComparar = new JDialogComparar(this,true);
+        frameComparar.pack();
+        frameComparar.setVisible(true);
     }//GEN-LAST:event_jmiConcatenarActionPerformed
 
     private void jmiPadronizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPadronizarActionPerformed
@@ -239,6 +258,18 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosed
 
+    private void jmiOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiOrdenarActionPerformed
+        JDialog frameOrdenar = new JDialogOrdenar(this,true);
+        frameOrdenar.pack();
+        frameOrdenar.setVisible(true);
+    }//GEN-LAST:event_jmiOrdenarActionPerformed
+
+    private void jmiGerarChaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGerarChaveActionPerformed
+        JDialog frameGerar = new JDialogGerarBibKey(this,true);
+        frameGerar.pack();
+        frameGerar.setVisible(true);
+    }//GEN-LAST:event_jmiGerarChaveActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -280,11 +311,13 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem jmiAbrir;
     private javax.swing.JMenuItem jmiComparar;
     private javax.swing.JMenuItem jmiConcatenar;
+    private javax.swing.JMenuItem jmiGerarChave;
     private javax.swing.JMenuItem jmiNovo;
     private javax.swing.JMenuItem jmiOrdenar;
     private javax.swing.JMenuItem jmiPadronizar;
