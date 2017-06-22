@@ -50,7 +50,7 @@ public class Splash extends javax.swing.JFrame {
 
         jLabel2.setText("César Okada");
 
-        jLabel3.setText("Felipe PIovezan");
+        jLabel3.setText("Felipe Piovezan");
 
         jLabel4.setText("Renato Carlos Rodrigues Miranda de Sá");
 
