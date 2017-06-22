@@ -3,20 +3,6 @@ package br.unesp.rc.bibSys.beans;
 public class ReferenciaBeans implements Comparable<ReferenciaBeans>{
 
     /**
-     * @return the journal
-     */
-    public String getJournal() {
-        return journal;
-    }
-
-    /**
-     * @param journal the journal to set
-     */
-    public void setJournal(String journal) {
-        this.journal = journal;
-    }
-
-    /**
      * @return the tipoReferencia
      */
     public String getTipoReferencia() {
@@ -353,6 +339,20 @@ public class ReferenciaBeans implements Comparable<ReferenciaBeans>{
     }
 
     /**
+     * @return the keyword
+     */
+    public String getKeyword() {
+        return keyword;
+    }
+
+    /**
+     * @param keyword the keyword to set
+     */
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
+    /**
      * @return the base
      */
     public String getBase() {
@@ -492,6 +492,20 @@ public class ReferenciaBeans implements Comparable<ReferenciaBeans>{
         this.timestamp = timestamp;
     }
 
+    /**
+     * @return the journal
+     */
+    public String getJournal() {
+        return journal;
+    }
+
+    /**
+     * @param journal the journal to set
+     */
+    public void setJournal(String journal) {
+        this.journal = journal;
+    }
+
     private String tipoReferencia;
     private String author;
     private String title;
@@ -516,6 +530,7 @@ public class ReferenciaBeans implements Comparable<ReferenciaBeans>{
     private String numpages;
     private String acmid;
     private String keywords;
+    private String keyword;
     private String base;
     private String isbn;
     private String note;
@@ -530,6 +545,6 @@ public class ReferenciaBeans implements Comparable<ReferenciaBeans>{
 
     @Override
     public int compareTo(ReferenciaBeans o) {
-        return (this.getBibKey().compareTo(o.bibKey));
+        return (this.getBibKey().compareTo(o.getBibKey()));
     }
 }

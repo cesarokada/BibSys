@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.apache.commons.beanutils.BeanUtils;
 
 public final class ParserObject {
@@ -43,14 +44,26 @@ public final class ParserObject {
         if(listLines.get(listLines.size() - 1).trim().equals("\\}"))
             listLines.remove(listLines.size() - 1);
         
+        List<String> keywords = new ArrayList<>();
+        
         //seta os Atributos do objeto
         for(String line : listLines){
             if(!line.trim().equals("")){
                 String[] keyValue = line.split("=");
+                
+                if(keyValue[0].trim().toLowerCase().equals("keywords")){
+                    keywords.add(keyValue[1]);
+                } else {
                 BeanUtils.setProperty(referencia,
                         keyValue[0].trim(),
                         keyValue.length > 1 ? keyValue[1].trim() : "");
+                }
             }
+        }
+        
+        if(keywords.size() > 0){
+            String joinedList = String.join(";",keywords);
+            BeanUtils.setProperty(referencia, "keywords", joinedList.trim());
         }
         
         return referencia;

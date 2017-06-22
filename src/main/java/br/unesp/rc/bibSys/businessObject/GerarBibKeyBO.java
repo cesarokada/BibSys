@@ -89,6 +89,9 @@ public class GerarBibKeyBO {
         else
             nomeRetorno = nomeCompleto.trim();
         
+        if(nomeRetorno.contains(" "))
+            nomeRetorno = nomeRetorno.replaceAll(" ", "");
+        
         return nomeRetorno;
     }
     /**
