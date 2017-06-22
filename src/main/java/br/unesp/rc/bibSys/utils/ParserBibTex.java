@@ -21,7 +21,7 @@ public final class ParserBibTex {
     /**
      * Transforma um Json em bibkey
      * @param <T>
-     * @param objeto
+     * @param objeto 
      * @return 
      */
     public static <T> String jsonToBibTex(T objeto){
